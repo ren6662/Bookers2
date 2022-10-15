@@ -1,8 +1,10 @@
 class Book < ApplicationRecord
-  
+
   has_one_attached :image
   belongs_to :user
-  
+  validates :book_name, presence: true
+  validates :image, presence: true
+
   def get_image
     if image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -11,5 +13,5 @@ class Book < ApplicationRecord
       'no_image.jpg'
     end
   end
-  
+
 end
