@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   validates :book_name, presence: true
-  validates :image, presence: true
+  validates :caption, presence: true
 
   def get_image
     if image.attached?
