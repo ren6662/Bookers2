@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body>
     <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -24,29 +24,30 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-light' %>
+              <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿フォーム', new_book_path, class: 'nav-link text-light' %>
+              <%= link_to 'User', users_path, class: 'nav-link text-white' %>
+              
             </li>
             <li class="nav-item">
-              <%= link_to 'Books', books_path, class: 'nav-link text-light' %>
+              <%= link_to 'Books', books_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to "Home", root_path, class: 'nav-link text-light' %>
+              <%= link_to "Home", root_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to "About",  about_path, class: 'nav-link text-light' %>
+              <%= link_to "About",  about_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light' %>
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-white' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light' %>
+              <%= link_to "Log in", new_user_session_path, class: 'nav-link text-white' %>
             </li>
             <% end %>
            </ul>
@@ -55,10 +56,6 @@
      </nav>
    </header>
     <main >
-      <p id="notice"></p>
-        <div class='container'>
-         <div class='row'>
-           <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <% if flash[:notice] %>
       <div>
       <%= flash[:notice] %>
@@ -69,8 +66,8 @@
       <%= flash[:alert] %>
       </div>
       <% end %>
+      <p id="notice"></p>
       <%= yield %>
-        </div>
        </div>
      </div>
 

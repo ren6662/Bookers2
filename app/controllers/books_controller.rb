@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @book = Book.new
   end
@@ -10,16 +12,20 @@ class BooksController < ApplicationController
      redirect_to books_path
      flash[:notice] = "You have created book successfully."
     else
-      render :new
+      @books = Book.all
+      render :index
     end
   end
 
   def index
-    @books = Book.page(params[:page])
+    @books = Book.all
+    @book = Book.new
   end
 
   def show
     @book = Book.find(params[:id])
+    @user = User.find(params[:id])
+    @newbook = Book.new
   end
 
   def edit

@@ -22,3 +22,7 @@
 <% end %>
 
   <%= render 'list', books: @books %>
+
+class="d-flex flex-column vh-100"
+
+
